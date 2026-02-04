@@ -6,7 +6,7 @@ Projet réalisé avec
 - Docker
 
 
-Docker
+# Docker
 Build: docker build -t musepose .
 
 Run : docker run --rm -it
