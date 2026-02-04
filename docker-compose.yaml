@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  musepose:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: musepose:latest
+    container_name: musepose-dev
+    
+    # Configuration GPU NVIDIA
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+      - CUDA_VISIBLE_DEVICES=0
+    
+    # Montage des volumes
+    volumes:
+      # Code source (lecture/écriture)
+      - ./:/home/user/app
+      
+      # Poids pré-entraînés (lecture seule recommandée)
+      - ./pretrained_weights:/home/user/app/pretrained_weights:ro
+      
+      # Dossiers de sortie
+      - ./output:/home/user/app/output
+      
+      # Assets (vos images et vidéos de test)
+      - ./assets:/home/user/app/assets
+    
+    # Pour garder le container actif
+    stdin_open: true
+    tty: true
+    
+    # Commande par défaut
+    command: bash
+    
+    # Optionnel : exposition de ports si vous lancez un serveur web
+    # ports:
+    #   - "7860:7860"  # Gradio par exemple

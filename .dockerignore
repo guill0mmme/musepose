@@ -1,0 +1,74 @@
+# Version control
+.git/
+.gitignore
+.gitattributes
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environnements virtuels
+venv/
+env/
+.venv/
+
+# Docker
+docker-compose*.yml
+.dockerignore
+
+# CRITIQUE : Exclure les gros fichiers
+output/
+pretrained_weights/
+
+# Fichiers de poids (sauf structure de dossiers)
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+*.bin
+
+# Datasets
+*.mp4
+*.avi
+*.mov
+# Gardez juste les exemples dans assets/
+!assets/**/*.mp4
+!assets/**/*.png
+!assets/**/*.jpg
+
+# Documentation
+*.md
+!README.md
+
+# Tests
+tests/
+.pytest_cache/
+
+# Configs locaux
+.env
+.env.local
