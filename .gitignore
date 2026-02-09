@@ -1,0 +1,5 @@
+# Dossiers de sortie
+output/
+
+# Poids pré-entraînés
+pretrained_weights/
