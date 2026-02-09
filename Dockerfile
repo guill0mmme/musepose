@@ -26,10 +26,12 @@ ENV PATH="/opt/venv/bin:$PATH"
 COPY requirements.txt .
 
 # Installation PyTorch avec CUDA 11.8
-RUN pip install --upgrade pip setuptools wheel && \
+RUN pip install --upgrade pip "setuptools<81" wheel && \
     pip install torch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 \
     --index-url https://download.pytorch.org/whl/cu118 && \
-    pip install --no-cache-dir -r requirements.txt
+    pip install --no-build-isolation --no-cache-dir clip@https://github.com/openai/CLIP/archive/d50d76daa670286dd6cacf3bcd80b5e4823fc8e1.zip && \
+    grep -vi "clip" requirements.txt | pip install --no-cache-dir -r /dev/stdin && \
+    pip install --no-cache-dir "huggingface_hub<0.26"
 
 # Installation des packages mmlab (selon la doc MusePose)
 RUN pip install --no-cache-dir -U openmim && \
