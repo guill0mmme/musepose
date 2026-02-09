@@ -7,9 +7,8 @@ Projet réalisé avec
 
 
 # Docker
-Build: docker build -t musepose .
+Build: docker compose build
 
-Run : docker run --rm -it
--v "$(pwd)":/home/user/app
---name dfgp
-test_muse_pose
+Start the container: docker compose up -d
+
+Enter the container: docker compose exec musepose bash
