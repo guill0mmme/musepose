@@ -1,5 +1,8 @@
-# Dossiers de sortie
-output/
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
 
-# Poids pré-entraînés
-pretrained_weights/
+.DS_Store
+pretrained_weights
+output
